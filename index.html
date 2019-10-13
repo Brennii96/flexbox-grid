@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Flex box grid</title>
+    <link rel="stylesheet" href="dist/css/main.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple Flexbox Grid</h1>
+      <p>A simple responsive grid system using flexbox for layout. Kind of works in IE11 but who cares about that anymore right? </p>
+
+      <p>This markup:</p>
+      <pre><code>&lt;div class="grid">
+        &lt;div class="row">
+            &lt;div class="cell">Auto&lt;/div>
+            &lt;div class="cell half">Half&lt;/div>
+            &lt;div class="cell">Auto&lt;/div>
+        &lt;/div>
+    &lt;/div></code></pre>
+
+      <p class="no-top">Creates this:</p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell">Auto</div>
+          <div class="cell half">Half</div>
+          <div class="cell">Auto</div>
+        </div>
+      </div>
+
+      <p>
+        By default the grid includes a gutter (defined in SCSS as
+        <code>$gutter: 1rem !default;</code>) and cells are auto-sized with
+        <code>flex: 1;</code>.
+      </p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell">Cell One</div>
+          <div class="cell">Cell Two</div>
+          <div class="cell">Cell Three</div>
+        </div>
+        <div class="row">
+          <div class="cell">Cell One</div>
+          <div class="cell">Cell Two</div>
+          <div class="cell">Cell Three</div>
+          <div class="cell">Cell Four</div>
+        </div>
+      </div>
+
+      <p>
+        Remove the gutters by adding the <code>no-gutters</code> class to the
+        grid.
+      </p>
+      <div class="grid no-gutters">
+        <div class="row">
+          <div class="cell">Cell One</div>
+          <div class="cell">Cell Two</div>
+          <div class="cell">Cell Three</div>
+        </div>
+        <div class="row">
+          <div class="cell">Cell One</div>
+          <div class="cell">Cell Two</div>
+          <div class="cell">Cell Three</div>
+          <div class="cell">Cell Four</div>
+        </div>
+      </div>
+
+      <p>
+        Default cells auto-fit contents so you can have as many as make sense in
+        your design.
+      </p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+        </div>
+      </div>
+
+      <p>
+        When resized below the mobile width (defined in SCSS as
+        <code>$mobile-width: 30rem !default;</code>) cells become full-width and
+        stack vertically.
+      </p>
+      <p class="no-top">So this:</p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+        </div>
+      </div>
+      <p class="no-top">Becomes this:</p>
+      <div class="mobile-demo">
+        <div class="grid">
+          <div class="row">
+            <div class="cell">Auto</div>
+            <div class="cell">Auto</div>
+            <div class="cell">Auto</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        You can specify a size for one or more cells in a row and they will keep
+        that ratio. Resize the window to see it in action.
+      </p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell fourth">Fourth</div>
+          <div class="cell">Auto</div>
+          <div class="cell third">Third</div>
+          <div class="cell">Auto</div>
+        </div>
+        <div class="row">
+          <div class="cell third">Third</div>
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell third">Third</div>
+        </div>
+        <div class="row">
+          <div class="cell">Auto</div>
+          <div class="cell half">Half</div>
+          <div class="cell">Auto</div>
+        </div>
+        <div class="row">
+          <div class="cell">Auto</div>
+          <div class="cell">Auto</div>
+          <div class="cell two-thirds">Two-Thirds</div>
+        </div>
+      </div>
+
+      <p>
+        By default rows align contents to the left (flex-start). Horizontal
+        spacing can be modified by adding classes to the row.
+      </p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell third">Third</div>
+          <div class="cell third">Third</div>
+        </div>
+      </div>
+      <p class="no-top">With <code>center</code>:</p>
+      <div class="grid">
+        <div class="row center">
+          <div class="cell third">Third</div>
+          <div class="cell third">Third</div>
+        </div>
+      </div>
+      <p class="no-top">With <code>right</code>:</p>
+      <div class="grid">
+        <div class="row right">
+          <div class="cell third">Third</div>
+          <div class="cell third">Third</div>
+        </div>
+      </div>
+      <p class="no-top">With <code>spread</code>:</p>
+      <div class="grid">
+        <div class="row spread">
+          <div class="cell third">Third</div>
+          <div class="cell third">Third</div>
+        </div>
+      </div>
+      <p class="no-top">With <code>spaced</code>:</p>
+      <div class="grid">
+        <div class="row spaced">
+          <div class="cell third">Third</div>
+          <div class="cell third">Third</div>
+        </div>
+      </div>
+
+      <p>
+        Grids can be nested indefinitely, and default cells use the full height
+        of their row. However, you can specify a cell's vertical alignment.
+      </p>
+      <div class="grid">
+        <div class="row">
+          <div class="cell half">
+            Half
+            <div class="grid">
+              <div class="row">
+                <div class="cell third">Third</div>
+                <div class="cell two-thirds">
+                  Two-Thirds
+                  <div class="grid">
+                    <div class="row">
+                      <div class="cell">Auto</div>
+                      <div class="cell">Auto</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cell top">Auto Top</div>
+          <div class="cell center">Auto Center</div>
+          <div class="cell bottom">Auto Bottom</div>
+        </div>
+      </div>
+
+      <p>Here's the markup for those nested grids:</p>
+      <pre><code>&lt;div class="grid">
+        &lt;div class="row">
+            &lt;div class="cell half">
+                Half
+                &lt;div class="grid">&lt;!-- Second level grid -->
+                    &lt;div class="row">
+                        &lt;div class="cell third">Third&lt;/div>
+                        &lt;div class="cell two-thirds">
+                            Two-Thirds
+                            &lt;div class="grid">&lt;!-- Third level grid -->
+                                &lt;div class="row">
+                                    &lt;div class="cell">Auto&lt;/div>
+                                    &lt;div class="cell">Auto&lt;/div>
+                                &lt;/div>
+                            &lt;/div>&lt;!-- Third level grid -->
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>&lt;!-- Second level grid -->
+            &lt;/div>
+            &lt;div class="cell top">Auto Top&lt;/div>
+            &lt;div class="cell center">Auto Center&lt;/div>
+            &lt;div class="cell bottom">Auto Bottom&lt;/div>
+        &lt;/div>
+    &lt;/div></code></pre>
+    </div>
+  </body>
+</html>
